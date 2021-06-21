@@ -123,7 +123,8 @@ public class MainActivity extends AppCompatActivity {
                                 Date date = new Date();
                                 String dateToDb = format.format(date);
                                 Log.d("DATEEEE", "onResponse: " + dateToDb);
-                                dbSetupHelper.addValues(dateToDb, cityName, String.valueOf(temp), description);
+                                String tempToDb = df.format(temp);
+                                dbSetupHelper.addValues(dateToDb, cityName, tempToDb, description);
                             } catch (JSONException e) {
                                 Log.d("Errorrrr", "onResponse: " + e);
                                 e.printStackTrace();

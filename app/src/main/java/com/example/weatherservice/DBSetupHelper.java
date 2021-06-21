@@ -50,13 +50,14 @@ public class DBSetupHelper extends SQLiteOpenHelper {
 
     public boolean addValues(String date, String city, String temperature, String description) {
         SQLiteDatabase db = this.getWritableDatabase();
+
         // sort of an intent for databases
         ContentValues contentValues = new ContentValues();
 
-        contentValues.put("COLUMN_DATE", date);
-        contentValues.put("COLUMN_CITY", city);
-        contentValues.put("COLUMN_TEMP", temperature);
-        contentValues.put("COLUMN_DESC", description);
+        contentValues.put(COLUMN_DATE, date);
+        contentValues.put(COLUMN_CITY, city);
+        contentValues.put(COLUMN_TEMP, temperature);
+        contentValues.put(COLUMN_DESC, description);
 
         long valueId = db.insert(TABLE_NAME, null, contentValues);
 
