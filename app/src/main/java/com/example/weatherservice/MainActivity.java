@@ -39,8 +39,8 @@ public class MainActivity extends AppCompatActivity {
     private final static String APP_ID = "26e6323eb2dbbbc71df32ed601e303e5";
     private final DecimalFormat df = new DecimalFormat("#.##");
     private String oldCitySearch;
+    private DBSetupHelper dbSetupHelper;
 
-    private  DBSetupHelper dbSetupHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
         etCountry = findViewById(R.id.etCountryWeather);
 
         btnGetWeather.setOnClickListener(this::onClickWeatherDetails);
+
+        dbSetupHelper = new DBSetupHelper(MainActivity.this);
 
     }
 
@@ -72,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                 tempUrl = URL + "?q=" + city + "&appid=" + APP_ID;
             }
 
-            RequestQueue queue = Volley.newRequestQueue(this);
+
             JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, tempUrl, null,
                     new Response.Listener<JSONObject>() {
                         @Override
@@ -120,9 +122,10 @@ public class MainActivity extends AppCompatActivity {
                                 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                                 Date date = new Date();
                                 String dateToDb = format.format(date);
-                                Log.d("DATE", "onResponse: " + dateToDb);
+                                Log.d("DATEEEE", "onResponse: " + dateToDb);
                                 dbSetupHelper.addValues(dateToDb, cityName, String.valueOf(temp), description);
                             } catch (JSONException e) {
+                                Log.d("Errorrrr", "onResponse: " + e);
                                 e.printStackTrace();
                             }
                         }
@@ -132,9 +135,10 @@ public class MainActivity extends AppCompatActivity {
                     String didNotWork = "That search wasn't sufficient";
                     tvResult.setText(didNotWork);
                     Log.d("error", "onErrorResponse: " + error);
+                    Toast.makeText(getApplicationContext(), error.toString().trim(), Toast.LENGTH_SHORT).show();
                 }
             });
-
+            RequestQueue queue = Volley.newRequestQueue(this);
             queue.add(jsonRequest);
             Log.d("btn", "onClickWeatherDetails: ");
         }
