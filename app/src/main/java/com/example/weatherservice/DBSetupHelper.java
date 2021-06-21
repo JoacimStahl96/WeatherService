@@ -95,6 +95,7 @@ public class DBSetupHelper extends SQLiteOpenHelper {
         db.close();
         return valuesInDb;
     }
+/*
 
     public void entireTable() {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -119,6 +120,7 @@ public class DBSetupHelper extends SQLiteOpenHelper {
             db.close();
         }
     }
+*/
 
     public void deleteEverythingFromTable() {
         SQLiteDatabase db = this.getWritableDatabase();
