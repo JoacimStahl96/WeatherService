@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">WeatherService</string>
+    <string name="weather_update">weather update</string>
+    <string name="get_city_weather">Enter city name</string>
+    <string name="weather_country">Country ( optional )</string>
+    <string name="btn_get_weather">Get weather</string>
+    <string name="activity_db_radera_btn">Delete</string>
+    <string name="activity_db_tillbaka_button">Back</string>
+    <string name="activity_main_visa_databas">Show database</string>
+    <string name="db_activity_databasen">Database</string>
+</resources>
