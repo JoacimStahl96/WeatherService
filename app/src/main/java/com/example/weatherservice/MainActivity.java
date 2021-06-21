@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
                                 Date date = new Date();
                                 String dateToDb = format.format(date);
                                 Log.d("DATE", "onResponse: " + dateToDb);
-                             //   dbSetupHelper.addValues(dateToDb, cityName, String.valueOf(temp), description);
+                                dbSetupHelper.addValues(dateToDb, cityName, String.valueOf(temp), description);
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
